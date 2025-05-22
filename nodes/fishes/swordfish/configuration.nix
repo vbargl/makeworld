@@ -75,6 +75,7 @@
     tmux
     fish
     openssh
+    git
     qemu_kvm
     virt-manager
     libvirt
@@ -91,7 +92,7 @@
   };
 
 
-  
+
 
   # Do NOT change this value unless you have manually inspected all the changes with migration guide.
   system.stateVersion = "24.11";
