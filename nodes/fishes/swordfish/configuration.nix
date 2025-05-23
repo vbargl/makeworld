@@ -54,6 +54,10 @@
   networking.hostName = "swordfish";
   networking.wireless.enable = false;
 
+  # firewall configuration
+  networking.firewall.allowedTCPPorts = [ 2224 ]; # pcsd
+  networking.firewall.allowedUDPPorts = [ 5405 ]; # corosync
+
 
 
   ###########
@@ -61,6 +65,13 @@
 
   # Enable OpenSSH daemon
   services.openssh.enable = true;
+
+  services.pacemaker.enable = true;
+  services.corosync = {
+    enable = true;
+    configFile = "/etc/corosync/corosync.conf";
+  };
+
 
 
   ##################
@@ -83,6 +94,9 @@
     spice-gtk
     dmidecode
     lsof
+    pcs
+    corosync
+    pacemaker
   ];
 
   # Enable virtualization support
@@ -93,7 +107,14 @@
 
 
 
+  ##################
+  # Static files
 
+  environment.etc."corosync/corosync.conf".text = builtins.readFile ./corosync/corosync.conf;
+
+
+
+  ##################
   # Do NOT change this value unless you have manually inspected all the changes with migration guide.
   system.stateVersion = "24.11";
 }
