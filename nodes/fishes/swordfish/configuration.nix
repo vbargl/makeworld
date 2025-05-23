@@ -7,7 +7,7 @@
 {
   # Enable experimental features 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
-  
+
   imports =
     [ # Include the results of the hardware scan.
       /etc/nixos/hardware-configuration.nix
@@ -97,7 +97,7 @@
     # 📈 Monitoring and cluster tools
     gotop           # TUI system monitor
     k9s             # Kubernetes TUI dashboard
-    virttop         # TUI for monitoring VMs
+    virt-top        # TUI for monitoring VMs
   ];
 
 
