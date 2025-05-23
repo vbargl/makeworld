@@ -43,7 +43,7 @@
     vbargl = {
       isNormalUser = true;
       extraGroups = [ "wheel" "libvirtd" ]; # Enable ‘sudo’ and virsh
-    }
+    };
   };
 
 
