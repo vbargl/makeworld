@@ -5,6 +5,9 @@
 { config, lib, pkgs, ... }:
 
 {
+  # Enable experimental features 
+  nix.settings.experimental-features = [ "nix-command" "flakes" ];
+  
   imports =
     [ # Include the results of the hardware scan.
       /etc/nixos/hardware-configuration.nix
@@ -90,7 +93,6 @@
     libvirt         # libvirt daemon and CLI tools
     qemu_kvm        # KVM backend for virtualization
     bridge-utils    # Bridge networking for VMs
-    virsh           # CLI for managing VMs
 
     # 📈 Monitoring and cluster tools
     gotop           # TUI system monitor
