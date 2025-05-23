@@ -91,9 +91,9 @@
     spice-gtk
     dmidecode
     lsof
-    pcs
     corosync
     pacemaker
+    crmsh
   ];
 
   # Enable virtualization support
