@@ -54,10 +54,6 @@
   networking.hostName = "swordfish";
   networking.wireless.enable = false;
 
-  # firewall configuration
-  networking.firewall.allowedTCPPorts = [ 2224 ]; # pcsd
-  networking.firewall.allowedUDPPorts = [ 5405 ]; # corosync
-
 
 
   ###########
@@ -65,36 +61,6 @@
 
   # Enable OpenSSH daemon
   services.openssh.enable = true;
-
-  services.pacemaker.enable = true;
-  services.corosync.enable = true;
-
-
-
-  ##################
-  # System packages
-
-  # visit search.nixos.org to find packages
-  environment.systemPackages = with pkgs; [
-    neovim
-    wget
-    curl
-    gotop
-    tmux
-    fish
-    openssh
-    git
-    qemu_kvm
-    virt-manager
-    libvirt
-    bridge-utils
-    spice-gtk
-    dmidecode
-    lsof
-    corosync
-    pacemaker
-    crmsh
-  ];
 
   # Enable virtualization support
   virtualisation.libvirtd = {
@@ -105,9 +71,32 @@
 
 
   ##################
-  # Static files
+  # System packages
 
-  environment.etc."corosync/corosync.conf".text = builtins.readFile ./corosync/corosync.conf;
+  # visit search.nixos.org to find packages
+  environment.systemPackages = with pkgs; [
+    # 🧰 Basic CLI tools
+    fish       # Fish shell
+    neovim     # Neovim text editor
+    curl       # cURL command line tool
+    tmux       # Terminal multiplexer
+    git        # Git version control
+    lsof       # List open files
+
+    # 🔒 Remote access
+    openssh
+
+    # 🖥️ Virtualization stack
+    libvirt         # libvirt daemon and CLI tools
+    qemu_kvm        # KVM backend for virtualization
+    bridge-utils    # Bridge networking for VMs
+    virsh           # CLI for managing VMs
+
+    # 📈 Monitoring and cluster tools
+    gotop           # TUI system monitor
+    k9s             # Kubernetes TUI dashboard
+    virttop         # TUI for monitoring VMs
+  ];
 
 
 
