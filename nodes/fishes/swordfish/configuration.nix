@@ -67,10 +67,7 @@
   services.openssh.enable = true;
 
   services.pacemaker.enable = true;
-  services.corosync = {
-    enable = true;
-    configFile = "/etc/corosync/corosync.conf";
-  };
+  services.corosync.enable = true;
 
 
 
